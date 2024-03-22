@@ -1,6 +1,5 @@
-FROM ubuntu
-RUN apt update -y
-RUN apt install apache2 -y
-COPY . /var/www/html
+FROM nginx:latest
+WORKDIR /usr/share/nginx/html
+COPY . .
 EXPOSE 85
-ENTRYPOINT apachectl -D FOREGROUND
+CMD ["nginx", "-g", "daemon off;"]
